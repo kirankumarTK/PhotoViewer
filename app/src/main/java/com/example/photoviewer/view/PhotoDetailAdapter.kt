@@ -10,12 +10,17 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.viewpager.widget.PagerAdapter
 import com.example.photoviewer.R
 import com.example.photoviewer.model.Photo
+import com.example.photoviewer.utills.DownloadImage
 import com.example.photoviewer.utills.getProgressDrawable
 import com.example.photoviewer.utills.loadImage
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.util.*
 
-class PhotoDetailAdapter(private val photoList: ArrayList<Photo>, private val context: Context) :
+class PhotoDetailAdapter(
+    private val photoList: ArrayList<Photo>,
+    private val context: Context?,
+    val listener: DownloadImage
+) :
     PagerAdapter() {
 
     override fun isViewFromObject(view: View, agr: Any) = view == agr
@@ -25,7 +30,7 @@ class PhotoDetailAdapter(private val photoList: ArrayList<Photo>, private val co
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val itemView =
-            (context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater).inflate(
+            (context?.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater).inflate(
                 R.layout.photo_detail_list_item,
                 container,
                 false
@@ -41,7 +46,7 @@ class PhotoDetailAdapter(private val photoList: ArrayList<Photo>, private val co
             getProgressDrawable(photoView.context)
         )
         fab.setOnClickListener {
-
+            listener.buttonClicked()
         }
 
         container.addView(itemView)
@@ -61,4 +66,7 @@ class PhotoDetailAdapter(private val photoList: ArrayList<Photo>, private val co
         photoListTemp.clear()
         notifyDataSetChanged()
     }
+
+
+
 }

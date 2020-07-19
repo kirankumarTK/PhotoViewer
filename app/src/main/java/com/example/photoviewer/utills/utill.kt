@@ -52,3 +52,5 @@ private fun checkTheNetworkAvailability(con: Context): Boolean {
 
 
 fun isNetAvailable(con: Context) = checkIsNetAvailable(con) && checkTheNetworkAvailability(con)
+
+

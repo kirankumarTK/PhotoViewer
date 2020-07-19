@@ -46,4 +46,10 @@ class PhotoViewModel : ViewModel() {
             }
         }
     }
+
+    override fun onCleared() {
+        super.onCleared()
+        if (::job.isInitialized)
+            job.cancel()
+    }
 }
