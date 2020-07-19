@@ -5,13 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.viewpager.widget.PagerAdapter
 import com.example.photoviewer.R
 import com.example.photoviewer.model.Photo
 import com.example.photoviewer.utills.getProgressDrawable
 import com.example.photoviewer.utills.loadImage
-import java.util.ArrayList
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import java.util.*
 
 class PhotoDetailAdapter(private val photoList: ArrayList<Photo>, private val context: Context) :
     PagerAdapter() {
@@ -29,11 +31,18 @@ class PhotoDetailAdapter(private val photoList: ArrayList<Photo>, private val co
                 false
             )
         val photoView: ImageView = itemView.findViewById(R.id.photo_detail_image)
+        val title: TextView = itemView.findViewById(R.id.titleTxt)
+        val fab: FloatingActionButton = itemView.findViewById(R.id.floatingActionButton)
+
+        title.text = photoList[position].title
 
         photoView.loadImage(
             "https://farm${photoList[position].farm}.staticflickr.com/${photoList[position].server}/${photoList[position].id}_${photoList[position].secret}_c.jpg",
             getProgressDrawable(photoView.context)
         )
+        fab.setOnClickListener {
+
+        }
 
         container.addView(itemView)
         return itemView
