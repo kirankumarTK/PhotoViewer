@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">PhotoViewer</string>
+    <string name="action_settings">Settings</string>
+    <string name="key">0252b621d6df7e78640f870fb65703f5</string>
+    <string name="secret">bcb3b4b36702fc93</string>
+    <string name="something_went_wrong">Something went wrong. Tap to retry </string>
+</resources>
