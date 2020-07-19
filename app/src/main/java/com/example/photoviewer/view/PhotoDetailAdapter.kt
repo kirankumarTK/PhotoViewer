@@ -11,6 +11,7 @@ import androidx.viewpager.widget.PagerAdapter
 import com.example.photoviewer.R
 import com.example.photoviewer.model.Photo
 import com.example.photoviewer.utills.DownloadImage
+import com.example.photoviewer.utills.TouchImageView
 import com.example.photoviewer.utills.getProgressDrawable
 import com.example.photoviewer.utills.loadImage
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -35,7 +36,7 @@ class PhotoDetailAdapter(
                 container,
                 false
             )
-        val photoView: ImageView = itemView.findViewById(R.id.photo_detail_image)
+        val photoView: TouchImageView = itemView.findViewById(R.id.photo_detail_image)
         val title: TextView = itemView.findViewById(R.id.titleTxt)
         val fab: FloatingActionButton = itemView.findViewById(R.id.floatingActionButton)
 
